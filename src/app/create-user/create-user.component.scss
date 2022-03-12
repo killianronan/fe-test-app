@@ -1,0 +1,66 @@
+.container{
+    background-color: #fafafa;
+    width: 100%;
+    height: 100%;
+    .header-container{
+        height: 15%;
+        position: relative;
+        .header{
+            position: absolute; 
+            bottom:0; 
+            left:0; 
+            margin: 0px 0px 5px 20px;
+            font-weight: normal;
+        }
+    }
+    .input-container{
+        margin: 0px 20px 10px 20px; 
+        background-color: white; 
+        border: 0.5px solid lightgrey; 
+        .form-container{
+            margin: 10px 20px 10px 20px;
+            .username-email{
+                width: 99%;
+            }
+            .first-name{
+                width: 49%; 
+                margin-right: 5px;
+            }
+            .last-name{
+                width: 49%; 
+            }
+            .name-small-screen{
+                width: 99%; 
+            }
+        }
+    }
+    .buttons-container{
+        height: 20%;
+        position: relative;
+        .cancel-button{
+            position: absolute; 
+            left:0; 
+            top:0; 
+            margin: 5px 0px 0px 20px;
+            font-weight: normal;
+        }
+        .enabled-add-user-button{
+            position: absolute; 
+            top:0; 
+            right:0; 
+            margin: 5px 20px 0px 0px;
+            font-weight: normal;
+        }
+        .disabled-add-user-button{
+            position: absolute; 
+            top:0; 
+            right:0; 
+            margin: 5px 20px 0px 0px;
+            font-weight: normal;
+        }
+        button.mat-raised-button{
+            background-color: #dadada;
+            color: #575757;
+        }
+    }
+}

@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="header-container">
+        <h2 class="header" i18n="Header for new user screen @@addUserHeader">Add New User</h2>
+    </div>
+    <div class="input-container">
+        <form [formGroup]="form" class="form-container">
+            <mat-form-field class="username-email">
+                <mat-label i18n>Username</mat-label>
+                <input matInput placeholder="Enter username.." formControlName="username" required [(ngModel)]="usernameToCheck" (ngModelChange)="checkIsUserTaken()">
+                <mat-error *ngIf="form.controls['username'].invalid" i18n="Username error message @@UsernameError">{{getErrorMessage("username")}}</mat-error>
+            </mat-form-field>
+            <mat-form-field [ngClass]="screenWidthThresh ? 'name-small-screen' : 'first-name'">
+                <mat-label i18n>First Name</mat-label>
+                <input matInput placeholder="Enter first name.." formControlName="firstName" required>
+                <mat-error *ngIf="this.form.controls['firstName'].invalid" i18n="First name error message @@firstNameError">{{getErrorMessage("firstName")}}</mat-error>
+            </mat-form-field>
+            <mat-form-field [ngClass]="screenWidthThresh ? 'name-small-screen' : 'last-name'">
+                <mat-label i18n>Last Name (Optional)</mat-label>
+                <input matInput placeholder="Enter last name.." formControlName="lastName">
+                <mat-error *ngIf="this.form.controls['lastName'].value.length<2" i18n="Last name error message @@lastNameError">{{getErrorMessage("lastName")}}</mat-error>
+            </mat-form-field>
+            <mat-form-field class="username-email">
+                <mat-label i18n>Email</mat-label>
+                <input matInput placeholder="Enter email.." formControlName="email" required>
+                <mat-error *ngIf="form.controls['email'].invalid" i18n="Email error message @@emailError">{{getErrorMessage("email")}}</mat-error>
+            </mat-form-field>
+        </form>
+    </div>
+    <div class="buttons-container">
+        <button mat-raised-button class="cancel-button" (click)="onCancel()" i18n="Cancel add user button @@cancelAddUserBtn">CANCEL</button>
+        <button mat-raised-button *ngIf="form.valid" class="enabled-add-user-button" style="background-color: #3c92c4; color:white" (click)="createNewUser()" i18n="Add user button enabled @@addUserBtnEn">ADD NEW USER</button>
+        <button mat-raised-button *ngIf="!form.valid" class="disabled-add-user-button" disabled i18n="Add user button disabled @@addUserBtnDs">ADD NEW USER</button>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="users-container">
+    <div class="new-user-button-container">
+        <button mat-raised-button class="new-user-button" (click)="navigateToCreateUser()" i18n="Button for routing to new user screen @@newUserRouteButton">NEW USER</button>
+        <div class="dropdown">
+            <mat-select [(value)]="selectedPageSize" (click)="setPageSize(selectedPageSize)">
+                <mat-option value="10">10</mat-option>
+                <mat-option value="20">20</mat-option>
+                <mat-option value="50">50</mat-option>
+                <mat-option value="100">100</mat-option>
+                <mat-option value="200">200</mat-option>
+            </mat-select>
+            <mat-label i18n="Rows being displayed in table @@rowsToDisplay">rows</mat-label>
+        </div>
+    </div>
+    <mat-table [dataSource]="dataSource" class="users-table" matSort #usersTbSort="matSort">
+        <ng-container matColumnDef="username">
+            <mat-header-cell *matHeaderCellDef mat-sort-header [style.maxWidth.px]="150" [style.minWidth.px]="100" i18n="Username column header @@usernameCol"> Username </mat-header-cell>
+            <mat-cell *matCellDef="let element" [style.maxWidth.px]="150" [style.minWidth.px]="100"> {{element.username}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="first_name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header [style.maxWidth.px]="150" [style.minWidth.px]="100" i18n="Full name column header @@fullNameCol"> Full Name </mat-header-cell>
+            <mat-cell *matCellDef="let element" [style.maxWidth.px]="150" [style.minWidth.px]="100"> {{element.first_name}} {{element.last_name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef mat-sort-header [style.minWidth.px]="180" [style.maxWidth.px]="250" i18n="Email column header @@emailCol"> Email </mat-header-cell>
+            <mat-cell *matCellDef="let element" [style.minWidth.px]="180" [style.maxWidth.px]="250"> {{element.email}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="id_status">
+            <mat-header-cell *matHeaderCellDef mat-sort-header [style.maxWidth.px]="150" [style.minWidth.px]="100" i18n="Status column header @@statusCol"> Status </mat-header-cell>
+            <mat-cell *matCellDef="let element" [style.maxWidth.px]="150" [style.minWidth.px]="100"> 
+                <a *ngIf="element.id_status==1" class="status-active">Active</a>
+                <a *ngIf="element.id_status==3" class="status-inactive">Inactive</a>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="created_date">
+            <mat-header-cell class="width-textArea" *matHeaderCellDef mat-sort-header [style.maxWidth.px]="150" [style.minWidth.px]="100" i18n="Date created column header @@dateCreatedCol"> Date Created </mat-header-cell>
+            <mat-cell class="width-textArea" *matCellDef="let element" [style.maxWidth.px]="150" [style.minWidth.px]="100"> {{element.created_date | date:'yyyy/MM/d'}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns" [style.minHeight.px]="30"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" [style.minHeight.px]="30"></mat-row>
+    </mat-table>
+    <div *ngIf="!dataLoaded" 
+    style="display: flex; justify-content: center; align-items: center;">
+    <mat-progress-spinner 
+        color="primary" 
+        mode="indeterminate">
+    </mat-progress-spinner>
+    </div>
+    <mat-paginator showFirstLastButtons [pageSize]="selectedPageSize"
+    aria-label="Select page of users">
+    </mat-paginator>
+</div>

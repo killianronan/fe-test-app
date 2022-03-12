@@ -1,0 +1,55 @@
+.users-container{
+    width: 100%;
+    height: 100%;
+    .new-user-button-container{
+        height: 10%;
+        position: relative;
+        .new-user-button{
+            position: absolute; 
+            bottom:0; 
+            left:0; 
+            margin: 0px 0px 5px 10px;
+            font-weight: normal;
+            color: white;
+        }
+        button.mat-raised-button{
+            background-color: #3c92c4;
+        }
+        .dropdown{
+            position: absolute; 
+            bottom:0; 
+            right:0; 
+            margin: 0px 10px 5px 0px;
+            font-weight: normal;
+            display: flex;
+            flex-direction: row;
+            .mat-select{
+                border: 0.5px solid grey;
+                min-width: 35px;
+                font-size: 10px;
+            }
+        }
+    }
+    .users-table{
+        border: 0.5px solid lightgray; 
+        min-width: 640px;
+        .status-active{
+            color: green;
+        }
+        .status-inactive{
+            color: red;
+        }
+        .mat-row:nth-child(odd){
+            background-color: #fafafa;
+        }
+        .mat-row:nth-child(even){
+            background-color: #f2f2f2;
+        }
+        .mat-row:hover {
+            background-color: lightgray;
+        }
+        .mat-row{
+            cursor: pointer;
+        }
+    }
+}

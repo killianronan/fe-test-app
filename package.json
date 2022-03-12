@@ -9,7 +9,8 @@
     "test": "ng test",
     "test-api": "cd ./api && jasmine",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "i18n:extract": "ng xi18n --output-path src/locale"
   },
   "private": true,
   "dependencies": {
@@ -19,6 +20,7 @@
     "@angular/compiler": "~8.2.14",
     "@angular/core": "~8.2.14",
     "@angular/forms": "~8.2.14",
+    "@angular/localize": "^9.1.13",
     "@angular/material": "^8.2.3",
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
